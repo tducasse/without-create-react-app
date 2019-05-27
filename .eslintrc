@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "prettier",
+    "react-hooks"
+  ],
+  "env": {
+    "jasmine": true,
+    "es6": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "allowImportExportEverywhere": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "import/no-unresolved": 0,
+    "import/no-absolute-path": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
+  }
+}
