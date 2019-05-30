@@ -1,11 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Normalize } from '@smooth-ui/core-sc';
 import Router from './Router';
 
 const App = () => (
-  <div>
+  <>
+    <Normalize />
     <Router />
-  </div>
+  </>
 );
 
 render(<App />, document.getElementById('app'));
