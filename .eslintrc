@@ -23,6 +23,7 @@
     "prettier/prettier": "error",
     "import/no-unresolved": 0,
     "import/no-absolute-path": 0,
+    "react/no-unescaped-entities":0,
     "react/jsx-filename-extension": [
       1,
       {

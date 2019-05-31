@@ -1,23 +1,17 @@
-import {
-  Button,
-  FormGroup,
-  Grid,
-  Input,
-  Label,
-  Typography,
-} from '@smooth-ui/core-sc';
-import React, { useEffect, useState } from 'react';
+import { Button, FormGroup, Grid, Input, Label } from '@smooth-ui/core-sc';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
-const Login = () => {
+const Login = (props) => {
   useEffect(() => {
     document.title = 'Login';
   }, []);
 
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [token, setToken] = useState(null);
-  const [valid, setValid] = useState(null);
+
+  const { setToken } = props;
 
   const logIn = async () => {
     try {
@@ -30,9 +24,11 @@ const Login = () => {
           },
         }
       );
-      setToken(response.data.data.token);
+      const { token } = response.data.data;
+      localStorage.setItem('token', token);
+      setToken(token);
     } catch (error) {
-      setValid(false);
+      console.error();
     }
   };
 
@@ -44,7 +40,6 @@ const Login = () => {
           control
           id="email"
           value={email}
-          valid={valid}
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormGroup>
@@ -55,14 +50,15 @@ const Login = () => {
           control
           id="password"
           value={password}
-          valid={valid}
           onChange={(e) => setPassword(e.target.value)}
         />
       </FormGroup>
       <Button onClick={logIn}>Log in</Button>
-      {token && <Typography variant="h4">{token}</Typography>}
     </Grid>
   );
+};
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
 };
 
 export default Login;
