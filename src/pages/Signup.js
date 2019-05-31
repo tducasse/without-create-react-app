@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 
-const Login = (props) => {
+const Signup = (props) => {
   useEffect(() => {
-    document.title = 'Login';
+    document.title = 'Signup';
   }, []);
 
   const [password, setPassword] = useState('');
@@ -14,10 +14,10 @@ const Login = (props) => {
 
   const { setToken } = props;
 
-  const login = async () => {
+  const signup = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:4000/api/auth/identity/callback',
+        'http://localhost:4000/api/auth/signup',
         {
           user: {
             email,
@@ -55,14 +55,14 @@ const Login = (props) => {
         />
       </FormGroup>
       <Row>
-        <Button onClick={login}>Log in</Button>
-        <Link to="/signup">Sign up</Link>
+        <Button onClick={signup}>Sign up</Button>
+        <Link to="/login">Log in</Link>
       </Row>
     </Grid>
   );
 };
-Login.propTypes = {
+Signup.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default Signup;

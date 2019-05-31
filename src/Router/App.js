@@ -8,8 +8,8 @@ const App = (props) => {
   const { logout } = props;
   return (
     <Router>
-      <Redirect from="/" to="/home" noThrow />
-      <Home path="/home" logout={logout} />
+      <Redirect from="/" to="home" noThrow />
+      <Home path="home" logout={logout} />
       <NotFound default />
     </Router>
   );
