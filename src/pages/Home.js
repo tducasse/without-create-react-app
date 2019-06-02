@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
-import { Button, Grid } from '@smooth-ui/core-sc';
+import { Button, Typography, styled } from '@smooth-ui/core-sc';
 import PropTypes from 'prop-types';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+`;
 
 const Home = (props) => {
   useEffect(() => {
@@ -9,10 +16,10 @@ const Home = (props) => {
 
   const { logout } = props;
   return (
-    <Grid>
-      <div>Welcome!</div>
+    <Container>
+      <Typography>Welcome!</Typography>
       <Button onClick={logout}>Logout</Button>
-    </Grid>
+    </Container>
   );
 };
 Home.propTypes = {

@@ -9,6 +9,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: white;
 `;
 
 const Width = styled.div`
@@ -66,6 +67,7 @@ const Login = (props) => {
       const { token } = response.data.data;
       localStorage.setItem('token', token);
       setToken(token);
+      navigate('/');
     } catch (error) {
       console.error();
     }
@@ -73,16 +75,13 @@ const Login = (props) => {
 
   const signup = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:4000/api/auth/signup',
-        {
-          user: {
-            email,
-            password,
-          },
-        }
-      );
-      console.log(response.data);
+      await axios.post('http://localhost:4000/api/auth/signup', {
+        user: {
+          email,
+          password,
+        },
+      });
+      navigate('/login');
     } catch (error) {
       console.error();
     }
@@ -94,9 +93,7 @@ const Login = (props) => {
     <Container>
       <Width>
         <FormGroup>
-          <Label htmlFor="email" color="white">
-            Email
-          </Label>
+          <Label htmlFor="email">Email</Label>
           <Input
             control
             id="email"
@@ -107,9 +104,7 @@ const Login = (props) => {
       </Width>
       <Width>
         <FormGroup>
-          <Label htmlFor="password" color="white">
-            Password
-          </Label>
+          <Label htmlFor="password">Password</Label>
           <Input
             type="password"
             control

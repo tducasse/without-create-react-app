@@ -9,6 +9,8 @@ const App = (props) => {
   return (
     <Router>
       <Redirect from="/" to="home" noThrow />
+      <Redirect from="/login" to="home" noThrow />
+      <Redirect from="/signup" to="home" noThrow />
       <Home path="home" logout={logout} />
       <NotFound default />
     </Router>

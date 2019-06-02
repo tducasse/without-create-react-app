@@ -1,19 +1,26 @@
 import React, { useEffect } from 'react';
-import { Grid, Typography } from '@smooth-ui/core-sc';
-import { Link } from '@reach/router';
+import { Typography, Button, styled } from '@smooth-ui/core-sc';
+import { navigate } from '@reach/router';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+`;
 
 const NotFound = () => {
   useEffect(() => {
     document.title = 'Not found';
   }, []);
   return (
-    <Grid>
-      <Typography variant="h2">Oops!</Typography>
-      <Typography variant="h3">Seems like you're lost!</Typography>
-      <Typography variant="h3">
-        <Link to="/">Go back to the app</Link>
-      </Typography>
-    </Grid>
+    <Container>
+      <Typography variant="h4">Oops!</Typography>
+      <Typography>Seems like you're lost!</Typography>
+      <Button as="a" variant="secondary" onClick={() => navigate('/')}>
+        Go back
+      </Button>
+    </Container>
   );
 };
 
