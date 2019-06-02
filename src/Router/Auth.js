@@ -3,7 +3,6 @@ import { Router, Redirect } from '@reach/router';
 import Login from '/pages/Login';
 import PropTypes from 'prop-types';
 import NotFound from '/pages/NotFound';
-import Signup from '/pages/Signup';
 
 const Auth = (props) => {
   const { setToken } = props;
@@ -11,7 +10,7 @@ const Auth = (props) => {
     <Router>
       <Redirect from="/" to="/login" noThrow />
       <Login path="/login" setToken={setToken} />
-      <Signup path="/signup" setToken={setToken} />
+      <Login path="/signup" setToken={setToken} isSignup />
       <NotFound default />
     </Router>
   );
